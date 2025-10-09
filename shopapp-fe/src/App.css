@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #1c5b41;
+  --secondary-color: #fffaf0;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 220px;
+}
+
+.primary-link {
+  color: var(--primary-color);
+}
+
+.primary-link:hover {
+  color: #000;
+}
+
+.secondary-link {
+  color: var(--secondary-color);
+}
+
+.secondary-link:hover {
+  color: #000000;
+}
+
+.custom-menu-item {
+  padding: 0 !important;
+}
+
+.ant-layout-sider .ant-layout-sider-trigger {
+  width: 220px !important; /* Đặt chiều rộng khi không collapsed */
+}
+
+/* Khi Sider đã thu gọn */
+.ant-layout-sider.ant-layout-sider-collapsed .ant-layout-sider-trigger {
+  width: 80px !important; /* Đặt chiều rộng khi collapsed */
+}
+
+.ant-layout-sider {
+  min-width: 220px !important; /* Chiều rộng khi không collapsed */
+}
+
+.ant-layout-sider.ant-layout-sider-collapsed {
+  min-width: 80px !important; /* Chiều rộng khi collapsed */
+}
