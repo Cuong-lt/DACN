@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    url: "${DB_URL}"
+    username: "${DB_USERNAME}"
+    password: "${DB_PASSWORD}"
+
+    hikari:
+      maximum-pool-size: 20      # Số kết nối tối đa trong pool
+      minimum-idle: 10           # Số kết nối tối thiểu giữ ở trạng thái idle
+      idle-timeout: 60000        # Thời gian idle tối đa trước khi đóng (ms)
+      max-lifetime: 1800000      # Tuổi thọ tối đa của 1 connection (ms)
+      connection-timeout: 30000  # Thời gian chờ tối đa để lấy connection (ms)
+      pool-name: MyHikariCP
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        enable_lazy_load_no_trans: true
+        format_sql: true
+    show-sql: false
+  profiles:
+    active: prod
+
+server:
+  port: 8088
+  servlet:
+    context-path: /api/v1
+
+app:
+  file:
+    storage-dir: D:/upload
+
+#logging:
+#  level:
+#    org.springframework.transaction: debug
+#    org.springframework.security: debug
+
+outbound:
+  redirect-uri: "http://localhost:3000/authenticate"
+  facebook:
+    client-id: "${FACEBOOK_CLIENT_ID}"
+    client-secret: "${FACEBOOK_CLIENT_SECRET}"
+  google:
+    client-id: "${GOOGLE_CLIENT_ID}"
+    client-secret: "${GOOGLE_CLIENT_SECRET}"
+
+jwt:
+  signer-key: "${JWT_SIGNER_KEY}"
+  valid-duration: 2 # in hours
+  refreshable-duration: 168 # in hours
